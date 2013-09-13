@@ -1,6 +1,6 @@
 <?php
 /**
-Plugin Name: e-goi Mail List Builder
+Plugin Name: E-goi Mailing List Builde
 Description: Mail list database populator
 Version: 1.0.0
 Author: Indot
