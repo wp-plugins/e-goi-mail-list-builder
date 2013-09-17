@@ -62,7 +62,7 @@
 			</th>
 			<td>
 				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_email' value='<?php echo $EgoiMailListBuilder->EMAIL; ?>'/>
-				<input type='checkbox' size='60' name='egoi_mail_list_builder_widget_settings_email_f' <?php if($EgoiMailListBuilder->EMAIL_F) echo "checked";?> disabled/>*
+				<input type='checkbox' size='60' name='egoi_mail_list_builder_widget_settings_email_f' checked disabled/>*
 				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_email_e' value='<?php echo $EgoiMailListBuilder->EMAIL_E; ?>'/>
 			</td>
 		</tr>

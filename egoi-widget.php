@@ -226,8 +226,7 @@ function egoi_mail_list_builder_request_handler() {
 			}
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->FIRST_NAME_E."</div>";
-			exit();
+			$postfname = "";
 		}
 		if(isset($_POST['widget_postlname'])) {
 			if($EgoiMailListBuilder->LAST_NAME_F){
@@ -244,8 +243,7 @@ function egoi_mail_list_builder_request_handler() {
 			}
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->LAST_NAME_E."</div>";
-			exit();
+			$postlname = "";
 		}
 		if(isset($_POST['widget_postemail'])) {
 			if($_POST['widget_postemail'] != '') {
@@ -275,8 +273,7 @@ function egoi_mail_list_builder_request_handler() {
 			}
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->MOBILE_E."</div>";
-			exit();
+			$postmobile = "";
 		}
 		if(isset($_POST['widget_postlanguage'])) {
 			if($EgoiMailListBuilder->LANGUAGE_F){
@@ -293,8 +290,7 @@ function egoi_mail_list_builder_request_handler() {
 			}
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->LANGUAGE_E."</div>";
-			exit();
+			$postlanguage = "";
 		}
 		if(isset($_POST['widget_postbdate'])) {
 			if($EgoiMailListBuilder->BIRTH_DATE_F){
@@ -311,8 +307,7 @@ function egoi_mail_list_builder_request_handler() {
 			}
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->BIRTH_DATE_E."</div>";
-			exit();
+			$postbdate = "";
 		}
 		if(isset($_POST['widget_postlist'])) {
 			$postlist = $_POST['widget_postlist'];
