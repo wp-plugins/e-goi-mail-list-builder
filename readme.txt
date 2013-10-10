@@ -69,6 +69,10 @@ No. :)
 
 == Changelog ==
 
+= 1.0.2 =
+* Fixed allot of bugs
+* Better UI
+
 = 1.0.1 =
 * Fixed Widget Fields
 
@@ -76,6 +80,10 @@ No. :)
 * First Version to be released.
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+Fixed allot of bugs
+Better UI
 
 = 1.0.1 =
 Fixed Widget Fields

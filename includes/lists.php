@@ -1,12 +1,14 @@
 	<?php $EgoiMailListBuilder = get_option('EgoiMailListBuilderObject'); ?>
 	<div class='wrap'>
 	<div id="icon-egoi-mail-list-builder-lists" class="icon32"></div>
-	<h2>Lists</h2>
+	<h2>Mailing Lists</h2>
 	<?php require('donate.php'); ?>
+	<h4>You're almost there! To add an E-goi form to your site, just go to the Wordpress "Appearance" menu. Then click "Widgets", drag the E-goi Mailing List Builder widget into "Main Sidebar" or one of the frontpage areas and save your changes. That's all there is to it!<br><br>Your E-goi account information follows below:</h4>
 	<?php 
 	if($EgoiMailListBuilder->isAuthed()) {
 		unset($result);
 		$result = $EgoiMailListBuilder->getLists();
+		update_option('EgoiMailListBuilderObject',$EgoiMailListBuilder);
 		for($x = 0;$x < count($result); $x++) {
 			$postname = 'egoi_mail_list_builder_updatelist'.$result[$x]['listnum'];
 			if(isset($_POST[$postname])) {
@@ -28,8 +30,6 @@
 		}
 		egoi_mail_list_builder_admin_notices();
 	?>
-		
-		<h3>My Lists</h3>
 		<form name='egoi_mail_list_builder_updatelist_form' method='post' action='<?php echo $_SERVER['REQUEST_URI']; ?>'>
 		<?php
 			$pagenum = isset( $_GET['pagenum'] ) ? absint( $_GET['pagenum'] ) : 1;
@@ -139,7 +139,7 @@
 			</div>
 		</div>
 		</form>
-		<h3>Create List</h3>
+		<h3>Create another list</h3>
 		<form name='egoi_mail_list_builder_createlist_form' method='post' action='<?php echo $_SERVER['REQUEST_URI']; ?>'>
 		<table class="form-table">
 		<tr>

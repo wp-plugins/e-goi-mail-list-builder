@@ -8,25 +8,29 @@
 			$EgoiMailListBuilder->subscribe_enable = (isset($_POST['egoi_mail_list_builder_settings_comments'])) ? true : false;
 			$EgoiMailListBuilder->subscribe_text = $_POST['egoi_mail_list_builder_settings_text'];
 			$EgoiMailListBuilder->subscribe_list = $_POST['egoi_mail_list_builder_settings_list'];
-
+			if($_POST['egoi_mail_list_builder_settings_list'] == -1) {
+				$EgoiMailListBuilder->subscribe_enable = false;
+			}
 			update_option('EgoiMailListBuilderObject',$EgoiMailListBuilder);
 		}
+		$result = $EgoiMailListBuilder->getLists();
+		update_option('EgoiMailListBuilderObject',$EgoiMailListBuilder);
 		egoi_mail_list_builder_admin_notices();
 	?>
-	<h3>Comment Section</h3>
+	<h3>"Post comment" section</h3>
 	<form name='egoi_mail_list_builder_settings_form' method='post' action='<?php echo $_SERVER['REQUEST_URI']; ?>'>
 	<table class="form-table">
 		<tr>
 			<th>
-				<label for="egoi_mail_list_builder_settings_comments">Subscribe in Comments Section</label>
+				<label for="egoi_mail_list_builder_settings_comments">Add a "Sign me up" checkbox</label>
 			</th>
 			<td>
-				<input type='checkbox' size='60' name='egoi_mail_list_builder_settings_comments' <?php if($EgoiMailListBuilder->subscribe_enable) echo "checked";?>/>
+				<input type='checkbox' size='60' name='egoi_mail_list_builder_settings_comments' <?php if($EgoiMailListBuilder->subscribe_enable);?>/>
 			</td>
 		</tr>
 		<tr>
 			<th>
-				<label for="egoi_mail_list_builder_settings_text">Text to Display</label>
+				<label for="egoi_mail_list_builder_settings_text">Checkbox text</label>
 			</th>
 			<td>
 				<input type='text' size='60' name='egoi_mail_list_builder_settings_text'  value='<?php echo $EgoiMailListBuilder->subscribe_text; ?>'/>
@@ -34,12 +38,12 @@
 		</tr>
 		<tr>
 			<th>
-				<label for="egoi_mail_list_builder_settings_list">List</label>
+				<label for="egoi_mail_list_builder_settings_list">Mailing list</label>
 			</th>
 			<td>
 				<select name='egoi_mail_list_builder_settings_list'>
+					<option value="-1" selected>Select a List</option>
 					<?php
-					$result = $EgoiMailListBuilder->getLists();
 					for($x = 0;$x < count($result); $x++) {	?>
 						<option value='<?php echo $result[$x]['listnum']; ?>' <?php if($result[$x]['listnum'] == $EgoiMailListBuilder->subscribe_list){ echo "selected"; } ?>><?php echo $result[$x]['title']; ?></option>
 					<?php }	?>

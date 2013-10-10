@@ -20,6 +20,12 @@
 		"LANGUAGE_E" => "Please Select a Language",
 		"BIRTH_DATE_E" => "Please Fill in the Birth Date",
 		"SUCCESS_E" => "Thank You for Subscribing!",
-		"LIST_E" => "Invalid List"
+		"LIST_E" => "Invalid List",
+		"LANGUAGE_T_EN" => "English",
+		"LANGUAGE_T_FR" => "French",
+		"LANGUAGE_T_DE" => "German",
+		"LANGUAGE_T_PT_PT" => "Portuguese",
+		"LANGUAGE_T_PT_BR" => "Portuguese (Brasil)",
+		"LANGUAGE_T_ES" => "Spanish"
 	);
 ?>

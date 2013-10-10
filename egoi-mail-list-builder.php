@@ -2,7 +2,7 @@
 /**
 Plugin Name: e-goi Mail List Builder
 Description: Mail list database populator
-Version: 1.0.1
+Version: 1.0.2
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot.pt/egoi-mail-list-builder.zip
@@ -29,18 +29,18 @@ License: GPLv2 or later
 /**
  * Define some useful constants
 **/
-define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.1');
+define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.2');
 define('EGOI_MAIL_LIST_BUILDER_DIR', plugin_dir_path(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_URL', plugin_dir_url(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_PLUGIN_KEY', 'ea5199d064c05237745156d5e4b82ef2');
 define('EGOI_MAIL_LIST_BUILDER_API_KEY', '0038eca8c4fa8e4e140be9cd8f735d8cad634187');
 define('EGOI_MAIL_LIST_BUILDER_XMLRPC_URL', 'http://api.e-goi.com/v2/xmlrpc.php');
-define('EGOI_MAIL_LIST_BUILDER_AFFILIATE','http://www.e-goi.pt/index.php?cID=232&aff=267d5afc22');
+define('EGOI_MAIL_LIST_BUILDER_AFFILIATE',' http://bo.e-goi.com/?action=registo&cID=232&aff=267d5afc22');
 
 /**
  * Load files
 **/
-function egoi_mail_list_builder_load() {
+function egoi_mail_list_builder_activation() {
 	set_include_path(EGOI_MAIL_LIST_BUILDER_DIR.'library/'. PATH_SEPARATOR . get_include_path());
 	require_once(EGOI_MAIL_LIST_BUILDER_DIR.'library/Zend/XmlRpc/Client.php');
     if(is_admin()) {
@@ -56,7 +56,7 @@ function egoi_mail_list_builder_load() {
 	}
 
 }
-egoi_mail_list_builder_load();
+egoi_mail_list_builder_activation();
 
 /**
  * Activation, Deactivation and Uninstall Functions
@@ -109,7 +109,7 @@ add_filter( 'plugin_action_links', 'egoi_mail_list_builder_settings_plugin_link'
  * Plugin deactivation code
 **/
 function egoi_mail_list_builder_deactivation() {  
-	
+	delete_option('EgoiMailListBuilderObject');
 }
 
 function egoi_mail_list_builder_fields_logged_in($fields) {
@@ -139,10 +139,11 @@ add_filter('comment_form_default_fields','egoi_mail_list_builder_fields_logged_o
 function egoi_mail_list_builder_comment_process($commentdata) {
     if(isset($_POST['egoi_mail_list_builder_subscribe'])){
     	if($_POST['egoi_mail_list_builder_subscribe'] == "subscribe"){
+    		die();
     		$EgoiMailListBuilder = get_option('EgoiMailListBuilderObject');
 			$result = $EgoiMailListBuilder->addSubscriber(
 				$EgoiMailListBuilder->subscribe_list,
-				'',
+				$commentdata['comment_author'],
 				'',
 				$commentdata['comment_author_email']
 			);
@@ -151,4 +152,12 @@ function egoi_mail_list_builder_comment_process($commentdata) {
     return $commentdata;
 }
 add_filter( 'preprocess_comment', 'egoi_mail_list_builder_comment_process' );
+
+function egoi_mail_list_builder_register_user_scripts($hook) {
+	wp_enqueue_script( 'jquery');
+	wp_enqueue_script( 'jquery-ui-datepicker');
+	wp_enqueue_style( 'indot-jquery-ui-css', EGOI_MAIL_LIST_BUILDER_URL . 'assets/css/jquery-ui.min.css');
+	wp_enqueue_script( 'canvas-loader', EGOI_MAIL_LIST_BUILDER_URL . 'assets/js/heartcode-canvasloader-min.js');
+}
+add_action( 'wp_enqueue_scripts', 'egoi_mail_list_builder_register_user_scripts' );
 ?>

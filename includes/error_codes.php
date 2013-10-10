@@ -50,7 +50,7 @@
 		"EXTRA_FIELD_XX_ALREADY_EXISTS" => "The extra field XX already exists in the mailing list",
 		"INVALID_EXTRA_FIELD" => "An extra field has an invalid name or contains invalid data",
 		"FAX_ALREADY_EXISTS" => "The fax number already exists in the mailing list",
-		"INVALID" => "The username is not valid",
+		"INVALID" => "The API key is not valid",
 		"FIST_NAME_ALREADY_EXISTS" => "The first name already exists in the mailing list",
 		"SEGMENT_NOT_FOUND" => "The segment has not been found in the mailing list",
 		"LAST_NAME_ALREADY_EXISTS" => "The last name already exists in the mailing list",

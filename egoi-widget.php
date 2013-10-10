@@ -44,9 +44,17 @@ class EgoiMailListBuilderWidget extends WP_Widget {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
-				event.preventDefault();
+				var cl = new CanvasLoader("LoadingImage<?php echo $this->egoiMailListBuilderID; ?>");
+				cl.setColor('#ababab'); // default is '#000000'
+				cl.setShape('spiral'); // default is 'oval'
+				cl.setDiameter(28); // default is 40
+				cl.setDensity(77); // default is 40
+				cl.setRange(1); // default is 1.3
+				cl.setSpeed(5); // default is 2
+				cl.show(); // Hidden by default
 				$("#egoi-mail-list-builder-submit-sub<?php echo $this->egoiMailListBuilderID; ?>").click(function() {  
 					$(".error<?php echo $this->egoiMailListBuilderID; ?>").empty();
+					$("#LoadingImage<?php echo $this->egoiMailListBuilderID; ?>").show();
 					$.ajax({
 						type : "POST",
 						url : "index.php",
@@ -63,6 +71,7 @@ class EgoiMailListBuilderWidget extends WP_Widget {
 						success : function(response) {
 							// The server has finished executing PHP and has returned something,
 							// so display it!
+							$("#LoadingImage<?php echo $this->egoiMailListBuilderID; ?>").hide();
 							$("#<?php echo $widgetid; ?>").append(response);
 						}
 					});
@@ -76,45 +85,55 @@ class EgoiMailListBuilderWidget extends WP_Widget {
 		if ( $fname ) {
 			echo "<label>".$EgoiMailListBuilder->FIRST_NAME."</label>";
 			if($EgoiMailListBuilder->FIRST_NAME_F) echo "<label style='color:red;'>*</label>";
-			echo "<div class='widget-text'><input type='text' name='egoi-mail-list-builder-fname-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-fname-sub".$this->egoiMailListBuilderID."' /></div>";
+			echo "<div class='widget-text'><input style='width:100%; margin-bottom: 10px;' type='text' name='egoi-mail-list-builder-fname-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-fname-sub".$this->egoiMailListBuilderID."' /></div>";
 		}
 		if ( $lname ) {
 			echo "<label>".$EgoiMailListBuilder->LAST_NAME."</label>";
 			if($EgoiMailListBuilder->LAST_NAME_F) echo "<label style='color:red;'>*</label>";
-			echo "<div class='widget-text'><input type='text' name='egoi-mail-list-builder-lname-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-lname-sub".$this->egoiMailListBuilderID."' /></div>";
+			echo "<div class='widget-text'><input style='width:100%; margin-bottom: 10px;' type='text' name='egoi-mail-list-builder-lname-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-lname-sub".$this->egoiMailListBuilderID."' /></div>";
 		}
 		echo "<label>".$EgoiMailListBuilder->EMAIL."</label>";
 		echo "<label style='color:red;'>*</label>";
-		echo "<div class='widget-text'><input type='text' name='egoi-mail-list-builder-email-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-email-sub".$this->egoiMailListBuilderID."' /></div>";
+		echo "<div class='widget-text'><input style='width:100%; margin-bottom: 10px;' type='text' name='egoi-mail-list-builder-email-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-email-sub".$this->egoiMailListBuilderID."' /></div>";
 		if ( $mobile ) {
 			echo "<label>".$EgoiMailListBuilder->MOBILE."</label>";
 			if($EgoiMailListBuilder->MOBILE_F) echo "<label style='color:red;'>*</label>";
-			echo "<div class='widget-text'><input type='text' name='egoi-mail-list-builder-mobile-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-mobile-sub".$this->egoiMailListBuilderID."' /></div>";
+			echo "<div class='widget-text'><input style='width:100%; margin-bottom: 10px;' type='text' name='egoi-mail-list-builder-mobile-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-mobile-sub".$this->egoiMailListBuilderID."' /></div>";
 		}
 		if ( $language ) {
 			echo "<label>".$EgoiMailListBuilder->LANGUAGE."</label>";
 			if($EgoiMailListBuilder->LANGUAGE_F) echo "<label style='color:red;'>*</label>";
-			echo "<div class='widget-text'>";
-			echo "<select name='egoi-mail-list-builder-language-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-language-sub".$this->egoiMailListBuilderID."'>";
-			echo "<option value='en'>English</option>";
-			echo "<option value='fr'>French</option>";
-			echo "<option value='de'>German</option>";
-			echo "<option value='pt'>Portuguese</option>";
-			echo "<option value='br'>Portuguese (Brasil)</option>";
-			echo "<option value='es'>Spanish</option>";
+			echo "<div class='widget-text' style='margin-bottom: 10px;'>";
+			echo "<select style='padding-top: 5px; padding-bottom: 5px; padding-right: 6px; width: 100%;' name='egoi-mail-list-builder-language-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-language-sub".$this->egoiMailListBuilderID."'>";
+			echo "<option value='en'>".$EgoiMailListBuilder->LANGUAGE_T_EN."</option>";
+			echo "<option value='fr'>".$EgoiMailListBuilder->LANGUAGE_T_FR."</option>";
+			echo "<option value='de'>".$EgoiMailListBuilder->LANGUAGE_T_DE."</option>";
+			echo "<option value='pt'>".$EgoiMailListBuilder->LANGUAGE_T_PT_PT."</option>";
+			echo "<option value='br'>".$EgoiMailListBuilder->LANGUAGE_T_PT_BR."</option>";
+			echo "<option value='es'>".$EgoiMailListBuilder->LANGUAGE_T_ES."</option>";
 			echo "</select>";
 			echo "</div>";
 		}
 		if ( $bdate ) {
 			echo "<label>".$EgoiMailListBuilder->BIRTH_DATE."</label>";
 			if($EgoiMailListBuilder->BIRTH_DATE_F) echo "<label style='color:red;'>*</label>";
-			echo "<div class='widget-text'><input type='text' name='egoi-mail-list-builder-bdate-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-bdate-sub".$this->egoiMailListBuilderID."' /></div>";
+			echo "<div class='widget-text'><input style='width:100%; margin-bottom: 10px;' type='text' name='egoi-mail-list-builder-bdate-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-bdate-sub".$this->egoiMailListBuilderID."' /></div>";
+			echo "<script>";
+			  echo "jQuery(function() {";
+			  echo "jQuery( '#egoi-mail-list-builder-bdate-sub".$this->egoiMailListBuilderID."' ).datepicker();";
+			  echo "jQuery( '#egoi-mail-list-builder-bdate-sub".$this->egoiMailListBuilderID."' ).datepicker( 'option', 'dateFormat', 'yy-mm-dd' );";
+			  echo "});";
+			 echo "</script>";
 		}
 		echo "<input type='hidden' name='egoi-mail-list-builder-list-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-list-sub".$this->egoiMailListBuilderID."' value='".$list."' />";
 		echo "<input type='hidden' name='egoi-mail-list-builder-id-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-id-sub".$this->egoiMailListBuilderID."' value='".$this->egoiMailListBuilderID."' />";
-		echo "<br /><input type='submit' name='egoi-mail-list-builder-submit-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-submit-sub".$this->egoiMailListBuilderID."' value='".$EgoiMailListBuilder->SUBSCRIBE."' />";
+		echo "<br /><input type='submit' style='margin-bottom: 15px; width:100%;' name='egoi-mail-list-builder-submit-sub".$this->egoiMailListBuilderID."' id='egoi-mail-list-builder-submit-sub".$this->egoiMailListBuilderID."' value='".$EgoiMailListBuilder->SUBSCRIBE."' />";
 		echo "</form>";
-		
+		echo "<div id='LoadingImage".$this->egoiMailListBuilderID."'style='display: none; width: 24px; margin: 0 auto;'>";
+		echo "</div>";
+		echo "<style>";
+		echo ".errorcenter{text-align:center;}";
+		echo "</style>";
         echo $after_widget;
 	}
 	
@@ -217,7 +236,7 @@ function egoi_mail_list_builder_request_handler() {
 					$postfname = $_POST['widget_postfname'];	
 				}
 				else{
-					echo "<div class='error".$id."'>".$EgoiMailListBuilder->FIRST_NAME_E."</div>";
+					echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->FIRST_NAME_E."</div>";
 					exit();
 				}
 			}
@@ -234,7 +253,7 @@ function egoi_mail_list_builder_request_handler() {
 					$postlname = $_POST['widget_postlname'];
 				}
 				else{
-					echo "<div class='error".$id."'>".$EgoiMailListBuilder->LAST_NAME_E."</div>";
+					echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->LAST_NAME_E."</div>";
 					exit();
 				}
 			}
@@ -250,12 +269,12 @@ function egoi_mail_list_builder_request_handler() {
 				$postemail = $_POST['widget_postemail'];
 			}
 			else {
-				echo "<div class='error".$id."'>".$EgoiMailListBuilder->EMAIL_E."</div>";
+				echo "<div class='errorcenter errorcenter error".$id."'>".$EgoiMailListBuilder->EMAIL_E."</div>";
 				exit();
 			}
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->EMAIL_E."</div>";
+			echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->EMAIL_E."</div>";
 			exit();
 		}
 		if(isset($_POST['widget_postmobile'])) {
@@ -264,7 +283,7 @@ function egoi_mail_list_builder_request_handler() {
 					$postmobile = $_POST['widget_postmobile'];
 				}
 				else{
-					echo "<div class='error".$id."'>".$EgoiMailListBuilder->MOBILE_E."</div>";
+					echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->MOBILE_E."</div>";
 					exit();
 				}
 			}
@@ -281,7 +300,7 @@ function egoi_mail_list_builder_request_handler() {
 					$postlanguage = $_POST['widget_postlanguage'];
 				}
 				else{
-					echo "<div class='error".$id."'>".$EgoiMailListBuilder->LANGUAGE_E."</div>";
+					echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->LANGUAGE_E."</div>";
 					exit();
 				}
 			}
@@ -298,7 +317,7 @@ function egoi_mail_list_builder_request_handler() {
 					$postbdate = $_POST['widget_postbdate'];
 				}
 				else{
-					echo "<div class='error".$id."'>".$EgoiMailListBuilder->BIRTH_DATE_E."</div>";
+					echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->BIRTH_DATE_E."</div>";
 					exit();
 				}
 			}
@@ -313,7 +332,7 @@ function egoi_mail_list_builder_request_handler() {
 			$postlist = $_POST['widget_postlist'];
 		}
 		else {
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->LIST_E."</div>";
+			echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->LIST_E."</div>";
 			exit();
 		}
 
@@ -327,16 +346,13 @@ function egoi_mail_list_builder_request_handler() {
 		$postlanguage,
 		$postbdate
 		);
-		if($EgoiMailListBuilder->exists){
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->description."</div>";
-			$EgoiMailListBuilder->exists = false;
-	    	$EgoiMailListBuilder->description = "";
-	    	$EgoiMailListBuilder->error = "";
-	    	update_option('EgoiMailListBuilderObject',$EgoiMailListBuilder);
-	    	exit();
+
+		if($result){
+			echo "<div class='errorcenter error".$id."'>".$result."</div>";
+			die();
 		}
 		else{
-			echo "<div class='error".$id."'>".$EgoiMailListBuilder->SUCCESS_E."</div>";
+			echo "<div class='errorcenter error".$id."'>".$EgoiMailListBuilder->SUCCESS_E."</div>";
 			exit();
 		}
 	}

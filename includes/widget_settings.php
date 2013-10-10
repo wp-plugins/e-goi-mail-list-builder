@@ -10,6 +10,12 @@
 			$EgoiMailListBuilder->EMAIL = $_POST['egoi_mail_list_builder_widget_settings_email'];
 			$EgoiMailListBuilder->MOBILE = $_POST['egoi_mail_list_builder_widget_settings_mobile'];
 			$EgoiMailListBuilder->LANGUAGE = $_POST['egoi_mail_list_builder_widget_settings_language'];
+			$EgoiMailListBuilder->LANGUAGE_T_EN = $_POST['egoi_mail_list_builder_widget_settings_language_en'];
+			$EgoiMailListBuilder->LANGUAGE_T_FR = $_POST['egoi_mail_list_builder_widget_settings_language_fr'];
+			$EgoiMailListBuilder->LANGUAGE_T_DE = $_POST['egoi_mail_list_builder_widget_settings_language_de'];
+			$EgoiMailListBuilder->LANGUAGE_T_PT_PT = $_POST['egoi_mail_list_builder_widget_settings_language_pt_pt'];
+			$EgoiMailListBuilder->LANGUAGE_T_PT_BR = $_POST['egoi_mail_list_builder_widget_settings_language_pt_br'];
+			$EgoiMailListBuilder->LANGUAGE_T_ES = $_POST['egoi_mail_list_builder_widget_settings_language_es'];
 			$EgoiMailListBuilder->BIRTH_DATE = $_POST['egoi_mail_list_builder_widget_settings_bdate'];
 			$EgoiMailListBuilder->SUBSCRIBE = $_POST['egoi_mail_list_builder_widget_settings_subscribe'];
 
@@ -33,7 +39,7 @@
 		}
 		egoi_mail_list_builder_admin_notices();
 	?>
-	<h3>Widget Text</h3>
+	<h3>Subscription form texts</h3>
 	<form name='egoi_mail_list_builder_widget_settings_form' method='post' action='<?php echo $_SERVER['REQUEST_URI']; ?>'>
 		<table class="form-table">
 		<tr>
@@ -84,6 +90,54 @@
 				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language' value='<?php echo $EgoiMailListBuilder->LANGUAGE; ?>'/>
 				<input type='checkbox' size='60' name='egoi_mail_list_builder_widget_settings_language_f' <?php if($EgoiMailListBuilder->LANGUAGE_F) echo "checked";?>/>*
 				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_e' value='<?php echo $EgoiMailListBuilder->LANGUAGE_E; ?>'/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="egoi_mail_list_builder_widget_settings_language_en">English Language</label>
+			</th>
+			<td>
+				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_en' value='<?php echo $EgoiMailListBuilder->LANGUAGE_T_EN; ?>'/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="egoi_mail_list_builder_widget_settings_language_fr">French Language</label>
+			</th>
+			<td>
+				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_fr' value='<?php echo $EgoiMailListBuilder->LANGUAGE_T_FR; ?>'/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="egoi_mail_list_builder_widget_settings_language_de">German Language</label>
+			</th>
+			<td>
+				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_de' value='<?php echo $EgoiMailListBuilder->LANGUAGE_T_DE; ?>'/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="egoi_mail_list_builder_widget_settings_language_pt_pt">Portuguese Language</label>
+			</th>
+			<td>
+				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_pt_pt' value='<?php echo $EgoiMailListBuilder->LANGUAGE_T_PT_PT; ?>'/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="egoi_mail_list_builder_widget_settings_language_pt_br">Portuguese (Brasil) Language</label>
+			</th>
+			<td>
+				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_pt_br' value='<?php echo $EgoiMailListBuilder->LANGUAGE_T_PT_BR; ?>'/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="egoi_mail_list_builder_widget_settings_language_es">Spanish Language</label>
+			</th>
+			<td>
+				<input type='text' size='60' name='egoi_mail_list_builder_widget_settings_language_es' value='<?php echo $EgoiMailListBuilder->LANGUAGE_T_ES; ?>'/>
 			</td>
 		</tr>
 		<tr>
