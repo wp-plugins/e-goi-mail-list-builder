@@ -2,7 +2,7 @@
 /**
 Plugin Name: e-goi Mail List Builder
 Description: Mail list database populator
-Version: 1.0.2
+Version: 1.0.3
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot.pt/egoi-mail-list-builder.zip
@@ -29,7 +29,7 @@ License: GPLv2 or later
 /**
  * Define some useful constants
 **/
-define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.2');
+define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.3');
 define('EGOI_MAIL_LIST_BUILDER_DIR', plugin_dir_path(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_URL', plugin_dir_url(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_PLUGIN_KEY', 'ea5199d064c05237745156d5e4b82ef2');
@@ -42,6 +42,7 @@ define('EGOI_MAIL_LIST_BUILDER_AFFILIATE',' http://bo.e-goi.com/?action=registo&
 **/
 function egoi_mail_list_builder_activation() {
 	set_include_path(EGOI_MAIL_LIST_BUILDER_DIR.'library/'. PATH_SEPARATOR . get_include_path());
+	require_once(EGOI_MAIL_LIST_BUILDER_DIR.'includes/class.xmlrpc.php');
 	require_once(EGOI_MAIL_LIST_BUILDER_DIR.'library/Zend/XmlRpc/Client.php');
     if(is_admin()) {
         require_once(EGOI_MAIL_LIST_BUILDER_DIR.'includes/admin.php');
@@ -109,7 +110,7 @@ add_filter( 'plugin_action_links', 'egoi_mail_list_builder_settings_plugin_link'
  * Plugin deactivation code
 **/
 function egoi_mail_list_builder_deactivation() {  
-	delete_option('EgoiMailListBuilderObject');
+	//delete_option('EgoiMailListBuilderObject');
 }
 
 function egoi_mail_list_builder_fields_logged_in($fields) {
