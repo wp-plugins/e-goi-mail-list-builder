@@ -25,7 +25,7 @@
 				<label for="egoi_mail_list_builder_settings_comments">Add a "Sign me up" checkbox</label>
 			</th>
 			<td>
-				<input type='checkbox' size='60' name='egoi_mail_list_builder_settings_comments' <?php if($EgoiMailListBuilder->subscribe_enable);?>/>
+				<input type='checkbox' size='60' name='egoi_mail_list_builder_settings_comments' <?php if($EgoiMailListBuilder->subscribe_enable) echo "checked";?>/>
 			</td>
 		</tr>
 		<tr>

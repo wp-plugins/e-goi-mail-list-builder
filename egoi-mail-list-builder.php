@@ -2,7 +2,7 @@
 /**
 Plugin Name: e-goi Mail List Builder
 Description: Mail list database populator
-Version: 1.0.3
+Version: 1.0.4
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot.pt/egoi-mail-list-builder.zip
@@ -29,7 +29,7 @@ License: GPLv2 or later
 /**
  * Define some useful constants
 **/
-define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.3');
+define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.4');
 define('EGOI_MAIL_LIST_BUILDER_DIR', plugin_dir_path(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_URL', plugin_dir_url(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_PLUGIN_KEY', 'ea5199d064c05237745156d5e4b82ef2');
@@ -140,7 +140,7 @@ add_filter('comment_form_default_fields','egoi_mail_list_builder_fields_logged_o
 function egoi_mail_list_builder_comment_process($commentdata) {
     if(isset($_POST['egoi_mail_list_builder_subscribe'])){
     	if($_POST['egoi_mail_list_builder_subscribe'] == "subscribe"){
-    		die();
+    		//die();
     		$EgoiMailListBuilder = get_option('EgoiMailListBuilderObject');
 			$result = $EgoiMailListBuilder->addSubscriber(
 				$EgoiMailListBuilder->subscribe_list,
