@@ -29,7 +29,7 @@ License: GPLv2 or later
 /**
  * Define some useful constants
 **/
-define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.5');
+define('EGOI_MAIL_LIST_BUILDER_VERSION', '1.0.6');
 define('EGOI_MAIL_LIST_BUILDER_DIR', plugin_dir_path(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_URL', plugin_dir_url(__FILE__));
 define('EGOI_MAIL_LIST_BUILDER_PLUGIN_KEY', 'ea5199d064c05237745156d5e4b82ef2');
