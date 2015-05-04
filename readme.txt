@@ -1,10 +1,10 @@
 ﻿=== Plugin Name ===
-Contributors: shut1x, gremory, noecunha, Delfim Carvalhosa
+Contributors: shut1x, gremory, noecunha, Delfim Carvalhosa, Paulo Mora
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7KG6KTTFEV4RS
 Tags: Newsletter, Subscribe, e-goi, indot, Widget, Subscribe Newsletter, Newsletter Populator, Send Newsletter, Mail List Builder, E-Mail Gatherer, egoi, Mailing List, E-mail Marketing, Email Marketing, Marketing
 Requires at least: 3.6
-Tested up to: 4.0
-Stable tag: 1.0.5
+Tested up to: 4.2
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

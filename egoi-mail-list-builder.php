@@ -2,7 +2,7 @@
 /**
 Plugin Name: e-goi Mail List Builder
 Description: Mail list database populator
-Version: 1.0.5
+Version: 1.0.6
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot.pt/egoi-mail-list-builder.zip
