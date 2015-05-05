@@ -1,5 +1,5 @@
-﻿=== Plugin Name ===
-Contributors: shut1x, gremory, noecunha, Delfim Carvalhosa, Paulo Mora
+=== Plugin Name ===
+Contributors: shut1x, gremory, noecunha, Delfim Carvalhosa, justmora
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7KG6KTTFEV4RS
 Tags: Newsletter, Subscribe, e-goi, indot, Widget, Subscribe Newsletter, Newsletter Populator, Send Newsletter, Mail List Builder, E-Mail Gatherer, egoi, Mailing List, E-mail Marketing, Email Marketing, Marketing
 Requires at least: 3.6
